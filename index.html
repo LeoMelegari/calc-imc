@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+    rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+    <title>Calcule seu IMC</title>
+</head>
+<body style="padding-left: 15px; padding-right: 15px;">
+    <div class="container-fluid">
+        <div class="row mt-3">
+            <div class="col-12 col-md-4 mb-3">
+                <input id="txtPeso" type="number" class="form-control" placeholder="Digite seu peso (kg)">
+            </div>
+            <div class="col-12 col-md-4 mb-3">
+                <input id="txtAlt" type="number" class="form-control" placeholder="Digite sua altura (m)">
+            </div>
+            <div class="col-12 col-md-4 d-grid gap-2 mb-3">
+                <button class="btn btn-primary" onclick="calc()">Calcular</button>
+            </div>
+            <div class="col-12 text-center">
+                <h2>Resultado</h2>
+            </div>
+            <div id="res" class="col-12 text-center " style="font-size: large; text-align: center;">
+                    <!--Mudar background com a cor de acordo com o resultado - colocar resultado
+                    Calculo: peso / altura ao quadrado -->
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</body>
+<script>
+    
+    function calc() {
+        var peso = parseInt(document.getElementById('txtPeso').value, 10);
+        var altura = parseFloat(document.getElementById('txtAlt').value, 10);
+        var res = (peso / (altura * altura)).toFixed(2);
+
+        if (res < 18.5) {
+            document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Está abaixo do recomendado, considere aumentar seu peso.`;
+            document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.body.style.background = '#ffe135';
+        } else if (res > 18.5 && res <= 24.9) {
+            document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Está dentro do recomendado.`;
+            document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.body.style.background = '#90ee90';
+        } else if (res > 25 && res <= 29.9) {
+            document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Está um pouco acima do recomendado, considere consultar um nutricionista.`;
+            document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.body.style.background = '#DEB887';
+        } else if (res > 30 && res <= 34.9) {
+            document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Estágio considerado <strong>obesidade Grau I</strong>, 
+                                                        considere consultar um nutricionista o quanto antes.`;
+                                                        document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.body.style.background = '#F4A460';
+        } else if (res > 35 && res <= 39.9) {
+            document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Estágio considerado <strong>Obesidade Severa (Grau II)</strong>, 
+                                                        considere consultar um nutricionista o mais rápido possível!`;
+                                                        document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.body.style.background = '#FF6347';
+        } else if (res >= 40) {
+            document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Estágio considerado <strong>Obesidade Mórbida (Grau III)</strong>, 
+                                                        considere consultar um nutricionista com a máxima urgência!`;
+                                                        document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.body.style.background = '#FF0000';
+        } else {
+            document.getElementById('res').style.fontSize = '20px'
+            document.getElementById('res').style.background = 'white'
+            document.getElementById('res').style.color = 'black'
+            document.getElementById('res').style.borderRadius = '5px'
+            document.getElementById('res').style.padding = '30px'
+            document.getElementById('res').style.paddingTop = '0px'
+            document.getElementById('res').style.boxShadow = '8px 6px 5px black'
+            document.getElementById('res').style.border = '1px solid black'
+            document.getElementById('res').innerHTML = `Valores inválidos. Digite novamente`;
+        }
+    }
+
+</script>
+</html>
