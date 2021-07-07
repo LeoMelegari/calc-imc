@@ -41,7 +41,7 @@
     function calc() {
         var peso = parseInt(document.getElementById('txtPeso').value, 10);
         var altura = parseFloat(document.getElementById('txtAlt').value, 10);
-        var res = (peso / (altura * altura)).toFixed(2);
+        var res = (peso / (altura * altura)).toFixed(1);
 
         if (res < 18.5) {
             document.getElementById('res').innerHTML = `<br>O seu IMC é de <strong>${res}</strong> <br>Está abaixo do recomendado, considere aumentar seu peso.`;
